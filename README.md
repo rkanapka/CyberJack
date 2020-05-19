@@ -1,5 +1,5 @@
 # Black-Jack
-Black Jack game created using Cross-Platform Python Framework
+Black Jack game created using Cross-Platform Kiwi Python Framework
 * Need to fix some small bugs.
 * Also future update - Change string card names into actual card images.
 
