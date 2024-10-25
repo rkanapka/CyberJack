@@ -12,6 +12,7 @@ from time import sleep
 from kivy.uix.floatlayout import FloatLayout
 import threading
 from kivy.core.audio import SoundLoader
+from kivy.clock import mainthread
 
 
 class MainMenu(Screen):
@@ -80,6 +81,7 @@ class PlayGame(Screen):
 
         return arg1  # sum of cards value returned here
 
+    @mainthread
     def popup(self, arg1):  # arg1 is popup message
         sleep(1)
         fl = FloatLayout()
