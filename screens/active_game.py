@@ -191,21 +191,20 @@ class ActiveGame(Screen):
     @mainthread
     def stand(self):
         while self.sum_opponent < 17:
-            if self.sum_opponent < self.sum_of_hand:
-                SoundLoader.load("sounds/deal_card.wav").play()
-                self.opponent_hand.append(self.deck[0])
-                self.opponent_card_box.add_widget(
-                    Image(
-                        source=f"images/cards/{self.deck[0]}.jpg",
-                        size_hint_x=None,
-                        width=100
-                    )
-                )
-                del self.deck[0]  # delete "first" card of the deck
-                self.sum_opponent = self.total_sum(self.opponent_hand)
-                sleep(1)
-            else:
+            if self.sum_opponent > self.sum_of_hand:
                 break
+            SoundLoader.load("sounds/deal_card.wav").play()
+            self.opponent_hand.append(self.deck[0])
+            self.opponent_card_box.add_widget(
+                Image(
+                    source=f"images/cards/{self.deck[0]}.jpg",
+                    size_hint_x=None,
+                    width=100
+                )
+            )
+            del self.deck[0]  # delete "first" card of the deck
+            self.sum_opponent = self.total_sum(self.opponent_hand)
+            sleep(1)
 
         if self.sum_of_hand < self.sum_opponent < 22:
             self.status_text = "You LOST " + str(self.your_bet) + f" {self.CURRENCY}!"
