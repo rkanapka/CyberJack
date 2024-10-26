@@ -20,6 +20,8 @@ class MainMenu(Screen):
 
 
 class PlayGame(Screen):
+    CURRENCY = "€$"
+
     left_money = NumericProperty(1000)
     your_bet = NumericProperty(0)
     your_hand = StringProperty("")
@@ -140,9 +142,9 @@ class PlayGame(Screen):
                 break
 
         if self.sum_of_hand < self.sum_dealer < 22:
-            self.status_text = "You LOST " + str(self.your_bet) + " Eur!"
+            self.status_text = "You LOST " + str(self.your_bet) + f" {self.CURRENCY}!"
         else:
-            self.status_text = "You WON " + str(self.your_bet * 2) + " Eur!"
+            self.status_text = "You WON " + str(self.your_bet * 2) + f" {self.CURRENCY}!"
             self.left_money += self.your_bet * 2
 
         self.popup(self.status_text)
@@ -152,10 +154,10 @@ class PlayGame(Screen):
 
     def check_who_won(self):
         if self.sum_of_hand == 21:
-            self.status_text = "You WON " + str(self.your_bet * 2) + " Eur!"
+            self.status_text = "You WON " + str(self.your_bet * 2) + f" {self.CURRENCY}!"
             self.left_money += self.your_bet * 2
         elif self.sum_of_hand > 21:
-            self.status_text = "You LOST " + str(self.your_bet) + " Eur!"
+            self.status_text = "You LOST " + str(self.your_bet) + f" {self.CURRENCY}!"
 
         self.popup(self.status_text)
 
