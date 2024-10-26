@@ -20,8 +20,8 @@ class MainMenu(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        SoundLoader.load('sounds/main_menu.mp3').play()
-        #  TODO stop sound on Play button press
+        self.main_menu_sound = SoundLoader.load('sounds/main_menu.mp3')
+        self.main_menu_sound.play()
 
 
 class PlayGame(Screen):
