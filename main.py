@@ -77,17 +77,31 @@ class PlayGame(Screen):
             self.ids.hit_btn.disabled = False
 
     @staticmethod
-    def total_sum(arg1, arg2, arg3):
-        arg1 = 0
-        arg2 = arg3.split()
-        # TODO A value can be 1 or 10. ATM I set it to 10
-        for i in arg2:  # calculating sum of hand
-            if i[0] == "J" or i[0] == "D" or i[0] == "K" or i[0] == "A" or i[0] == "1":
-                arg1 += 10
-            else:
-                arg1 += int(i[0])
+    def total_sum(cards_in_hand):
+        """
+        Calculate total value of cards in hand.
 
-        return arg1  # sum of cards value returned here
+        For each Ace, we initially add 1 to the total value. If the total is below 12,
+        we can treat one Ace as 11 instead of 1, so we add an additional 10 to the total.
+
+        :param cards_in_hand: list of cards in hand e.g. ['2S', 'AA']
+        :return: total value of cards.
+        """
+        total = 0
+        aces_exists = False
+        for card_name in cards_in_hand:  # calculating sum of hand
+            if card_name[0] in ["J", "Q", "K"]:
+                total += 10
+            elif card_name[0] == "A":
+                total += 1
+                aces_exists = True
+            else:
+                total += int(card_name[0])
+
+        if aces_exists and total < 12:
+            total += 10
+
+        return total  # sum of cards value returned here
 
     @mainthread
     def popup(self, text):
