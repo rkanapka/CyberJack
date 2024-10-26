@@ -6,11 +6,11 @@
     background_color: rgba("#58B587")
 
 <MainMenu>
-    canvas.before:
-        Rectangle:
-            pos: self.pos
-            size: self.size
-            source: 'images/menu_bg.jpg'
+    AnchorLayout:
+        Video:
+            options: {'eos': 'loop'}
+            state: 'play'
+            source: 'images/menu_background.mp4'
 
     FloatLayout:
 
@@ -31,7 +31,7 @@
             Rectangle:
                 pos: self.pos
                 size: self.size
-                source: 'images/background.jpg'
+                source: 'images/background.png'
 
         Image:
             source: 'images/dealer.png'
