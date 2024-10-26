@@ -47,26 +47,21 @@ class PlayGame(Screen):
     deck = []
 
     def make_deck(self):
-        self.deck = []
-        for i in range(0, 52):  # making deck
-            self.deck.append(self.card[i % 13] + self.suit[int(i / 13)])
+        self.deck = [self.card[i % 13] + self.suit[int(i / 13)] for i in range(0, 52)]
 
         shuffle(self.deck)  # shuffling deck
 
     def betting(self, instance):  # the on_press chips function
         self.chip_btn_text = instance.text  # save the button's text
-        if self.chip_btn_text == "twenty":
-            if self.your_bet + 20 <= 300 and self.left_money >= 20:
-                self.left_money -= 20
-                self.your_bet += 20
-        elif self.chip_btn_text == "fifty":
-            if self.your_bet + 50 <= 300 and self.left_money >= 50:
-                self.left_money -= 50
-                self.your_bet += 50
-        elif self.chip_btn_text == "hundred":
-            if self.your_bet + 100 <= 300 and self.left_money >= 100:
-                self.left_money -= 100
-                self.your_bet += 100
+        if self.chip_btn_text == "twenty" and self.your_bet + 20 <= 300 and self.left_money >= 20:
+            self.left_money -= 20
+            self.your_bet += 20
+        elif self.chip_btn_text == "fifty" and self.your_bet + 50 <= 300 and self.left_money >= 50:
+            self.left_money -= 50
+            self.your_bet += 50
+        elif self.chip_btn_text == "hundred" and self.your_bet + 100 <= 300 and self.left_money >= 100:
+            self.left_money -= 100
+            self.your_bet += 100
 
         SoundLoader.load("sounds/chips.mp3").play()
 
