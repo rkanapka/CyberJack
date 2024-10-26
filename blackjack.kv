@@ -126,23 +126,12 @@
             text: str(root.left_money) + " " + root.CURRENCY
 
         Label:
-            font_size: 30
-            size_hint: 0.3, 0.1
-            text: str(root.your_hand)
-            pos_hint: {"center_x": 0.5, "center_y":0.35}
-        Label:
             font_size: 25
             size_hint: 0.3, 0.1
             text: "Sum of hand: " + str(root.sum_of_hand)
-            pos_hint: {"center_x": 0.5, "center_y":0.29}
-
-        Label:
-            font_size: 30
-            size_hint: 0.3, 0.1
-            text: str(root.dealer_hand)
-            pos_hint: {"center_x": 0.5, "center_y":0.65}
+            pos_hint: {"center_x": 0.5, "center_y":0.22}
         Label:
             font_size: 25
             size_hint: 0.3, 0.1
-            text: "Sum of hand: " + str(root.sum_dealer)
-            pos_hint: {"center_x": 0.5, "center_y":0.59}
+            text: "Sum of hand: " + str(root.sum_opponent)
+            pos_hint: {"center_x": 0.8, "center_y":0.42}
