@@ -265,7 +265,7 @@ class WindowManager(ScreenManager):
     pass
 
 
-kv = Builder.load_file("blackjack.kv")
+kv = Builder.load_file("main.kv")
 
 sm = WindowManager()
 
@@ -276,11 +276,11 @@ for screen in screens:
 sm.current = "main"
 
 
-class BlackJack(App):
+class CyberJack(App):
     def build(self):
         self.icon = 'images/chip.ico'
         return sm
 
 
 if __name__ == "__main__":
-    BlackJack().run()
+    CyberJack().run()

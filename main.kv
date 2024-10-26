@@ -1,0 +1,137 @@
+#:import rgba kivy.utils.get_color_from_hex
+
+<Button>:
+    font_size: 15
+    size_hint: 0.1, 0.05
+    background_color: rgba("#58B587")
+
+<MainMenu>
+    AnchorLayout:
+        Video:
+            options: {'eos': 'loop'}
+            state: 'play'
+            source: 'images/menu_background.mp4'
+
+    FloatLayout:
+
+        Button:
+            text: "Play"
+            pos_hint: {"x": 0.45, "top":0.52}
+            font_size: 18
+            size_hint: 0.15, 0.05
+            background_color: 1, .3, .4, .85
+            on_release:
+                app.root.current = "playing"
+
+<PlayGame>
+
+    FloatLayout:
+
+        canvas.before:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: 'images/background.png'
+
+        Image:
+            source: 'images/dealer.png'
+            size_hint: 0.3, 0.5
+            pos_hint: {"center_x": 0.35, "center_y":0.78}
+        Image:
+            source: 'images/chips/stack1.png'
+            size_hint: 0.1, 0.1
+            pos_hint: {"center_x": 0.42, "center_y":0.8}
+        Image:
+            source: 'images/chips/stack2.png'
+            size_hint: 0.1, 0.1
+            pos_hint: {"center_x": 0.51, "center_y":0.8}
+        Image:
+            source: 'images/chips/stack3.png'
+            size_hint: 0.1, 0.1
+            pos_hint: {"center_x": 0.60, "center_y":0.8}
+        Image:
+            source: 'images/deck.png'
+            size_hint: 0.2, 0.2
+            pos_hint: {"center_x": 0.67, "center_y":0.72}
+        Label:
+            text: "Dealer"
+            font_size: 20
+            pos_hint: {"center_x": 0.51, "center_y":0.9}
+        Button:
+            id: deal_btn
+            text: "Deal"
+            disabled: True
+            pos_hint: {"x": 0.35, "top":0.175}
+            on_press: root.deal_cards();
+        Button:
+            id: hit_btn
+            text: "Hit"
+            pos_hint: {"x": 0.45, "top":0.175}
+            disabled: True
+            on_press: root.hit_card();
+        Button:
+            id: stand_btn
+            text: "Stand"
+            pos_hint: {"x": 0.55, "top":0.175}
+            disabled: True
+            on_press: root.standing();
+
+        Button:
+            id: double_btn
+            text: "Double" if double_btn.state == "normal" else "Down"
+            pos_hint: {"x": 0.65, "top":0.175}
+            disabled: True
+        ImageButton:
+            id: twenty
+            source: 'images/chips/1.png'
+            size_hint: 0.1, 0.1
+            text: "twenty"
+            pos_hint: {"center_x": 0.07, "center_y":0.15}
+            on_press: root.betting(self);
+        ImageButton:
+            id: fifty
+            text: "fifty"
+            source: 'images/chips/2.png'
+            size_hint: 0.1, 0.1
+            pos_hint: {"center_x": 0.16, "center_y":0.15}
+            on_press: root.betting(self);
+        ImageButton:
+            id: hundred
+            text: "hundred"
+            source: 'images/chips/3.png'
+            size_hint: 0.1, 0.1
+            pos_hint: {"center_x": 0.25, "center_y":0.15}
+            on_press: root.betting(self);
+        Label:
+            text: "Betting"
+            size_hint: 0.3, 0.1
+            pos_hint: {"center_x": 0.16, "center_y":0.22}
+        Label:
+            text: "Your bet:"
+            size_hint: 0.3, 0.1
+            pos_hint: {"center_x": 0.07, "center_y":0.07}
+        Label:
+            text: "Your money:"
+            size_hint: 0.3, 0.1
+            pos_hint: {"center_x": 0.085, "center_y":0.03}
+        Label:
+            pos_hint: {"center_x": 0.16, "center_y":0.07}
+            font_size: 20
+            size_hint: 0.3, 0.1
+            text: str(root.your_bet) + " " + root.CURRENCY
+        Label:
+            pos_hint: {"center_x": 0.19, "center_y":0.03}
+            font_size: 20
+            size_hint: 0.3, 0.1
+            text: str(root.left_money) + " " + root.CURRENCY
+
+        Label:
+            font_size: 25
+            size_hint: 0.3, 0.1
+            text: "Sum of hand: " + str(root.sum_of_hand)
+            pos_hint: {"center_x": 0.5, "center_y":0.22}
+        Label:
+            font_size: 25
+            size_hint: 0.3, 0.1
+            text: "Sum of hand: " + str(root.sum_opponent)
+            pos_hint: {"center_x": 0.8, "center_y":0.42}
