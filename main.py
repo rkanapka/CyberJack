@@ -16,7 +16,11 @@ from kivy.clock import mainthread
 
 
 class MainMenu(Screen):
-    pass
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+        SoundLoader.load('sounds/main_menu.mp3').play()
+        #  TODO stop sound on Play button press
 
 
 class PlayGame(Screen):
