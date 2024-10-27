@@ -1,4 +1,8 @@
 # CyberJack
+
+CyberJack is a game created using Cross-Platform Kiwi Python Framework<br/>
+Inspired by a 2020 action role-playing game Cyberpunk 2077 developed by CD Project Red.
+
 ## Project prerequisites
 - Git installed on your system.
 - Python 3.12.3 (install instruction bellow)
@@ -32,9 +36,6 @@ pip install -r requirements.txt
 ```bash
 python main.py
 ```
-
-CyberJack is a game created using Cross-Platform Kiwi Python Framework
-Inspired by a 2020 action role-playing game Cyberpunk 2077 developed by CD Project Red.
 
 
 ![Menu](https://i.imgur.com/Ii69A6A.jpg)
