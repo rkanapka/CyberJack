@@ -1,5 +1,5 @@
 from kivy.app import App
-from kivy.uix.screenmanager import ScreenManager
+from kivy.uix.screenmanager import FadeTransition, ScreenManager
 from kivy.lang import Builder
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.image import Image
@@ -18,7 +18,7 @@ class WindowManager(ScreenManager):
 
 kv = Builder.load_file("main.kv")
 
-sm = WindowManager()
+sm = WindowManager(transition=FadeTransition())
 
 screens = [MainMenu(name="main"), ActiveGame(name="playing")]
 for screen in screens:
