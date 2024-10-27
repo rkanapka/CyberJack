@@ -119,20 +119,20 @@
             pos_hint: {"center_x": 0.16, "center_y":0.07}
             font_size: 20
             size_hint: 0.3, 0.1
-            text: str(root.your_bet) + " " + root.CURRENCY
+            text: str(root.player_bet) + " " + root.CURRENCY
         Label:
             pos_hint: {"center_x": 0.19, "center_y":0.03}
             font_size: 20
             size_hint: 0.3, 0.1
-            text: str(root.left_money) + " " + root.CURRENCY
+            text: str(root.player_balance) + " " + root.CURRENCY
 
         Label:
             font_size: 25
             size_hint: 0.3, 0.1
-            text: "Sum of hand: " + str(root.sum_of_hand)
+            text: "Sum of hand: " + str(root.player_hand_value)
             pos_hint: {"center_x": 0.5, "center_y":0.22}
         Label:
             font_size: 25
             size_hint: 0.3, 0.1
-            text: "Sum of hand: " + str(root.sum_opponent)
+            text: "Sum of hand: " + str(root.opponent_hand_value)
             pos_hint: {"center_x": 0.8, "center_y":0.42}
